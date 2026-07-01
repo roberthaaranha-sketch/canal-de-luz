@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Imersões Quânticas · Robertha Aranha</title>
+<meta name="description" content="Imersões e canalizações de Robertha Aranha — Canal de Luz JDL. Busque pelo que sente e receba a frequência que precisa.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#13112E;--darker:#0E0C24;--mid:#1E1A42;
+  --gold:#C9A96E;--gold2:#E8C98A;--white:#F5F2EC;--muted:#A89FC0;--accent:#9B7FD4;
+  --border:rgba(201,169,110,0.18);
+  --ff-head:'Cormorant Garamond',Georgia,serif;
+  --ff-body:'Lato',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:var(--ff-body);font-weight:300;line-height:1.75;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.9rem 2rem;background:rgba(8,7,26,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2}
+.logo-name{font-family:var(--ff-head);font-size:1.1rem;color:var(--gold);letter-spacing:.03em}
+.logo-sub{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.nav-back{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:.4rem 1rem;border-radius:2px;transition:all .3s;white-space:nowrap}
+.nav-back:hover{border-color:var(--gold);color:var(--gold)}
+
+/* HERO */
+.hero{min-height:42vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 3rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(155,127,212,0.1) 0%,transparent 60%),linear-gradient(180deg,#0E0C24 0%,#13112E 100%)}
+.hero-symbol{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;position:relative}
+.hero-title{font-family:var(--ff-head);font-size:clamp(2.5rem,7vw,5rem);font-weight:300;color:var(--white);line-height:1;position:relative;margin-bottom:.75rem}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-desc{color:var(--muted);font-size:.95rem;max-width:520px;line-height:1.8;position:relative;margin-bottom:.75rem}
+.hero-count{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,169,110,.5);position:relative}
+.hero-count span{color:var(--gold);font-size:.85rem}
+
+/* LOADING */
+.loading{text-align:center;padding:4rem;color:var(--muted)}
+.loading-symbol{font-size:1.5rem;color:var(--gold);display:block;animation:pulse 1.5s ease-in-out infinite;margin-bottom:.75rem}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* SEARCH */
+.search-section{padding:2.5rem 2rem;max-width:940px;margin:0 auto}
+.pergunta{text-align:center;margin-bottom:2rem}
+.pergunta h2{font-family:var(--ff-head);font-size:clamp(1.5rem,4vw,2.3rem);font-weight:300;color:var(--white);margin-bottom:.4rem}
+.pergunta p{color:var(--muted);font-size:.88rem}
+
+.search-wrap{position:relative;margin-bottom:1.5rem}
+.search-wrap input{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:var(--ff-body);font-size:1rem;padding:.9rem 3.5rem .9rem 1.25rem;outline:none;transition:border-color .3s}
+.search-wrap input:focus{border-color:rgba(201,169,110,.5)}
+.search-wrap input::placeholder{color:rgba(168,159,192,.4)}
+.search-icon{position:absolute;right:3.2rem;top:50%;transform:translateY(-50%);color:var(--gold);opacity:.5;pointer-events:none}
+.clear-btn{position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;display:none;padding:.2rem}
+.clear-btn.show{display:block}
+
+/* TAGS */
+.tags-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.tag{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.35rem .9rem;border-radius:20px;font-size:.78rem;cursor:pointer;transition:all .2s;font-family:var(--ff-body)}
+.tag:hover{border-color:var(--gold);color:var(--gold)}
+.tag.active{background:rgba(201,169,110,.12);border-color:var(--gold);color:var(--gold)}
+
+/* RESULTS BAR */
+.results-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:.5rem}
+.results-label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,169,110,.4)}
+.results-label span{color:var(--gold)}
+.results-pages{font-size:.72rem;color:var(--muted)}
+
+/* CARDS */
+.cards{display:grid;gap:1.1rem}
+
+.card{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:border-color .25s}
+.card:hover{border-color:rgba(201,169,110,.35)}
+
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1.5rem 1.75rem 1rem;cursor:pointer}
+.card-meta{display:flex;flex-direction:column;gap:.15rem;flex:1}
+.card-type{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.card-title{font-family:var(--ff-head);font-size:1.2rem;color:var(--white);font-weight:400;line-height:1.3}
+.card-toggle{color:var(--gold);font-size:.85rem;flex-shrink:0;transition:transform .25s;margin-top:.2rem;opacity:.6}
+.card.open .card-toggle{transform:rotate(180deg)}
+
+.card-preview{padding:0 1.75rem 1.25rem;cursor:pointer}
+.card-info{display:flex;gap:.75rem;align-items:center;margin-bottom:.6rem;flex-wrap:wrap}
+.card-date{font-size:.65rem;letter-spacing:.1em;color:rgba(201,169,110,.5)}
+.card-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.65rem}
+.card-tag{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.12);padding:.1rem .45rem;border-radius:8px}
+.card-excerpt{color:var(--muted);font-size:.88rem;line-height:1.75;font-style:italic}
+
+/* CONTEÚDO COMPLETO */
+.card-full{display:none;border-top:1px solid var(--border);padding:1.5rem 1.75rem 1.75rem}
+.card.open .card-full{display:block}
+.card-full-text{color:var(--muted);font-size:.92rem;line-height:1.95;white-space:pre-wrap;word-break:break-word}
+.card-full-text mark{background:rgba(201,169,110,.2);color:var(--gold2);border-radius:2px;padding:0 2px}
+.card-footer-info{margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(201,169,110,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.card-source{font-size:.65rem;letter-spacing:.08em;color:rgba(201,169,110,.35)}
+.btn-agendar{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:.45rem 1.1rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:all .3s}
+.btn-agendar:hover{background:var(--gold);color:var(--dark)}
+
+/* PAGINATION */
+.pagination{display:flex;justify-content:center;gap:.5rem;margin-top:2rem;flex-wrap:wrap}
+.page-btn{background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--muted);padding:.45rem .85rem;font-size:.78rem;border-radius:2px;cursor:pointer;transition:all .2s;font-family:var(--ff-body)}
+.page-btn:hover{border-color:var(--gold);color:var(--gold)}
+.page-btn.active{background:rgba(201,169,110,.12);border-color:var(--gold);color:var(--gold)}
+.page-btn:disabled{opacity:.3;cursor:default}
+
+.no-results{text-align:center;padding:3rem 2rem;display:none}
+.no-results .nr-sym{font-size:2rem;color:rgba(201,169,110,.3);margin-bottom:1rem}
+.no-results p{color:var(--muted);font-size:.9rem}
+
+/* CTA & FOOTER */
+.cta-section{text-align:center;padding:3.5rem 2rem;border-top:1px solid var(--border);margin-top:1.5rem}
+.cta-section h3{font-family:var(--ff-head);font-size:1.7rem;font-weight:300;color:var(--white);margin-bottom:.6rem}
+.cta-section p{color:var(--muted);font-size:.88rem;margin-bottom:1.75rem}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--dark);padding:.8rem 2rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border-radius:2px;transition:background .3s}
+.btn-primary:hover{background:var(--gold2)}
+.footer-mini{text-align:center;padding:1.5rem;font-size:.68rem;color:rgba(168,159,192,.35);letter-spacing:.1em}
+
+@media(max-width:600px){
+  .card-header,.card-preview,.card-full{padding-left:1.25rem;padding-right:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="logo-name">Robertha Aranha</span>
+    <span class="logo-sub">Canal de Luz</span>
+  </a>
+  <a href="index.html" class="nav-back">← Voltar</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-symbol">✦ &nbsp; Acervo de Canalizações &nbsp; ✦</p>
+  <h1 class="hero-title">Imersões<br><em>Quânticas</em></h1>
+  <p class="hero-desc">Canalizações de Robertha Aranha — mensagens dos Seres de Luz traduzidas em frequência de amor e expansão de consciência desde 2007.</p>
+  <p class="hero-count" id="heroCount">Carregando acervo...</p>
+</section>
+
+<div class="search-section">
+  <div class="loading" id="loadingEl">
+    <span class="loading-symbol">✦</span>
+    <p>Carregando acervo de imersões e canalizações...</p>
+  </div>
+
+  <div id="mainContent" style="display:none">
+    <div class="pergunta">
+      <h2>Como você está se sentindo?</h2>
+      <p>Escolha um estado abaixo ou escreva qualquer palavra — e receba a frequência que precisa.</p>
+    </div>
+
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Escreva: amor, medo, cura, expansão, Ashtar, ancestral, liberação..." autocomplete="off"/>
+      <span class="search-icon">✦</span>
+      <button class="clear-btn" id="clearBtn">✕</button>
+    </div>
+
+    <p class="tags-label">Ou escolha como se sente agora</p>
+    <div class="tags" id="tagsEl">
+      <button class="tag" data-q="ansioso">ansioso(a)</button>
+      <button class="tag" data-q="perdido">perdido(a)</button>
+      <button class="tag" data-q="propósito">propósito</button>
+      <button class="tag" data-q="medo">com medo</button>
+      <button class="tag" data-q="bloqueado">bloqueado(a)</button>
+      <button class="tag" data-q="cura">buscando cura</button>
+      <button class="tag" data-q="amor">precisando de amor</button>
+      <button class="tag" data-q="expansão">em expansão</button>
+      <button class="tag" data-q="consciência">consciência</button>
+      <button class="tag" data-q="despertar">despertar</button>
+      <button class="tag" data-q="liberdade">liberdade</button>
+      <button class="tag" data-q="gratidão">gratidão</button>
+      <button class="tag" data-q="transformação">transformação</button>
+      <button class="tag" data-q="paz">em paz</button>
+      <button class="tag" data-q="ancestral">ancestral</button>
+      <button class="tag" data-q="Ashtar">Ashtar</button>
+      <button class="tag" data-q="arcanjo">arcanjo</button>
+      <button class="tag" data-q="abundância">abundância</button>
+    </div>
+
+    <div class="results-bar">
+      <p class="results-label">Mostrando <span id="resultsCount">—</span> imersões</p>
+      <p class="results-pages" id="pagesInfo"></p>
+    </div>
+
+    <div class="cards" id="cardsEl"></div>
+
+    <div class="no-results" id="noResults">
+      <div class="nr-sym">◎</div>
+      <p>Nenhuma imersão encontrada.</p>
+      <p style="margin-top:.5rem;font-size:.82rem">Tente outra palavra ou
+        <button onclick="resetSearch()" style="background:none;border:none;color:var(--gold);cursor:pointer;font-size:.82rem">veja todas</button>.
+      </p>
+    </div>
+    <div class="pagination" id="paginationEl"></div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h3>Quer uma imersão <em>só para você</em>?</h3>
+  <p>Agende uma sessão individual — Consciência Multidimensional, Registros Akáshicos ou Terapia das 5 Perguntas.</p>
+  <a href="index.html#agendar" class="btn-primary">Agendar Sessão ✦</a>
+</div>
+<div class="footer-mini">✦ &nbsp; Robertha Aranha · Canal de Luz · Metodologia Quântica Juan de la Luz · 2007–2026 &nbsp; ✦</div>
+
+<script>
+const PER_PAGE = 15;
+let allData = [];
+let filtered = [];
+let currentPage = 1;
+let currentQuery = '';
+
+function norm(s) {
+  return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+}
+
+function highlight(text, q) {
+  if (!q || !text) return text || '';
+  const words = norm(q).split(/\s+/).filter(w=>w.length>1);
+  let out = text;
+  words.forEach(w => {
+    const safe = w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    out = out.replace(new RegExp('('+safe+')', 'gi'), '<mark>$1</mark>');
+  });
+  return out;
+}
+
+function search(query) {
+  const q = norm(query);
+  const words = q.split(/\s+/).filter(w=>w.length>1);
+  if (!words.length) return allData;
+  return allData.filter(item => {
+    const hay = norm([item.titulo, item.excerpt, item.full, item.tags.join(' ')].join(' '));
+    return words.every(w => hay.includes(w));
+  });
+}
+
+function renderCards(list, query) {
+  const el = document.getElementById('cardsEl');
+  const noRes = document.getElementById('noResults');
+  const countEl = document.getElementById('resultsCount');
+
+  const total = list.length;
+  const totalPages = Math.ceil(total / PER_PAGE) || 1;
+  const page = Math.min(currentPage, totalPages);
+  const start = (page-1)*PER_PAGE;
+  const pageItems = list.slice(start, start+PER_PAGE);
+
+  countEl.textContent = total === allData.length
+    ? `todas as ${total.toLocaleString('pt-BR')}`
+    : total.toLocaleString('pt-BR');
+  document.getElementById('pagesInfo').textContent =
+    total > PER_PAGE ? `Página ${page} de ${totalPages}` : '';
+
+  if (!pageItems.length) {
+    el.innerHTML = '';
+    noRes.style.display = 'block';
+    document.getElementById('paginationEl').innerHTML = '';
+    return;
+  }
+  noRes.style.display = 'none';
+
+  el.innerHTML = pageItems.map(item => {
+    const titleHl  = highlight(item.titulo, query);
+    const excerptHl = highlight(item.excerpt, query);
+    const fullHl   = highlight(item.full || item.excerpt, query);
+    const tagsHtml = (item.tags||[]).slice(0,4).map(t=>`<span class="card-tag">${t}</span>`).join('');
+
+    return `<div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-meta">
+          <span class="card-type">${item.tipo}</span>
+          <span class="card-title">${titleHl}</span>
+        </div>
+        <span class="card-toggle">▾</span>
+      </div>
+      <div class="card-preview" onclick="toggleCard(this.previousElementSibling)">
+        <div class="card-info">
+          ${item.data ? `<span class="card-date">✦ ${item.data}</span>` : ''}
+          <span class="card-date">${item.ano}</span>
+        </div>
+        ${tagsHtml ? `<div class="card-tags">${tagsHtml}</div>` : ''}
+        <p class="card-excerpt">"${excerptHl}..."</p>
+      </div>
+      <div class="card-full">
+        <p class="card-full-text">${fullHl}</p>
+        <div class="card-footer-info">
+          <span class="card-source">✦ &nbsp; Canal de Luz: Robertha Aranha &nbsp;·&nbsp; ${item.fonte}</span>
+          <a href="index.html#agendar" class="btn-agendar">Agendar minha sessão</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  renderPagination(total, page, totalPages);
+
+  // Scroll cards into view on page change
+  if (page > 1) {
+    document.querySelector('.results-bar')?.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+function toggleCard(headerEl) {
+  const card = headerEl.closest('.card');
+  card.classList.toggle('open');
+  if (card.classList.contains('open')) {
+    card.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+}
+
+function renderPagination(total, page, totalPages) {
+  const el = document.getElementById('paginationEl');
+  if (totalPages <= 1) { el.innerHTML=''; return; }
+
+  let pages = [];
+  if (totalPages <= 7) {
+    for(let i=1;i<=totalPages;i++) pages.push(i);
+  } else {
+    pages = [1,2];
+    if (page > 4) pages.push('…');
+    for(let i=Math.max(3,page-1);i<=Math.min(totalPages-2,page+1);i++) pages.push(i);
+    if (page < totalPages-3) pages.push('…');
+    pages.push(totalPages-1, totalPages);
+    pages = [...new Set(pages)];
+  }
+  let html = `<button class="page-btn" ${page===1?'disabled':''} onclick="goPage(${page-1})">‹ Anterior</button>`;
+  pages.forEach(p => {
+    if (p==='…') html += `<span class="page-btn" style="border:none;cursor:default;opacity:.4">…</span>`;
+    else html += `<button class="page-btn ${p===page?'active':''}" onclick="goPage(${p})">${p}</button>`;
+  });
+  html += `<button class="page-btn" ${page===totalPages?'disabled':''} onclick="goPage(${page+1})">Próxima ›</button>`;
+  el.innerHTML = html;
+}
+
+function goPage(p) {
+  currentPage = p;
+  renderCards(filtered, currentQuery);
+}
+
+function applySearch() {
+  const q = document.getElementById('searchInput').value.trim();
+  currentQuery = q;
+  currentPage = 1;
+  document.getElementById('clearBtn').classList.toggle('show', q.length>0);
+  document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
+  filtered = search(q);
+  renderCards(filtered, q);
+}
+
+function resetSearch() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('clearBtn').classList.remove('show');
+  document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
+  currentQuery = '';
+  currentPage = 1;
+  filtered = [...allData];
+  renderCards(filtered, '');
+}
+
+// Load data
+fetch('acervo.json')
+  .then(r => r.json())
+  .then(data => {
+    allData = data;
+    filtered = [...data];
+    document.getElementById('heroCount').innerHTML =
+      `<span>${data.length.toLocaleString('pt-BR')}</span> imersões e canalizações`;
+    document.getElementById('loadingEl').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    renderCards(filtered, '');
+
+    document.getElementById('searchInput').addEventListener('input', applySearch);
+    document.getElementById('clearBtn').addEventListener('click', resetSearch);
+    document.querySelectorAll('.tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        const wasActive = tag.classList.contains('active');
+        document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
+        if (!wasActive) {
+          tag.classList.add('active');
+          document.getElementById('searchInput').value = tag.dataset.q;
+          applySearch();
+        } else {
+          resetSearch();
+        }
+      });
+    });
+  })
+  .catch(() => {
+    document.getElementById('loadingEl').innerHTML =
+      '<p style="color:var(--gold)">Erro ao carregar o acervo. Verifique se o servidor está rodando.</p>';
+  });
+</script>
+</body>
+</html>

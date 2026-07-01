@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Símbolo Robertha Aranha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#08071A;color:#F5F2EC;font-family:'Lato',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;gap:4rem}
+
+/* ── VERSÃO PRINCIPAL ── */
+.main-version{display:flex;flex-direction:column;align-items:center;gap:0}
+.symbol-ring{position:relative;width:300px;height:300px;animation:rotSlow 90s linear infinite}
+@keyframes rotSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.symbol-ring img{width:100%;height:100%}
+
+.logo-block{display:flex;flex-direction:column;align-items:center;margin-top:1.5rem;gap:.25rem}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:#C9A96E;letter-spacing:.08em;line-height:1}
+.logo-divider{width:180px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.5),transparent);margin:.6rem 0}
+.logo-sub{font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;color:#A89FC0}
+
+/* ── VARIAÇÕES ── */
+.variations{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;max-width:860px}
+.var-card{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.var-card p{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:#A89FC0;text-align:center}
+
+/* Variação 1 — só símbolo estático */
+.var-static img{width:160px;height:160px}
+
+/* Variação 2 — com fundo circular dourado suave */
+.var-circle{position:relative;width:160px;height:160px}
+.var-circle::before{content:'';position:absolute;inset:0;border-radius:50%;border:1px solid rgba(201,169,110,.3)}
+.var-circle img{width:100%;height:100%}
+
+/* Variação 3 — símbolo menor + nome ao lado (horizontal) */
+.var-horizontal{display:flex;align-items:center;gap:1.25rem}
+.var-horizontal img{width:80px;height:80px}
+.var-horizontal .txt{display:flex;flex-direction:column;gap:.15rem}
+.var-horizontal .nm{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:#C9A96E;letter-spacing:.06em;line-height:1.1}
+.var-horizontal .sb{font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:#A89FC0}
+
+.section-label{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(201,169,110,.45);text-align:center}
+</style>
+</head>
+<body>
+
+<p class="section-label">✦ &nbsp; Símbolo Identidade · Robertha Aranha &nbsp; ✦</p>
+
+<!-- VERSÃO PRINCIPAL ANIMADA -->
+<div class="main-version">
+  <div class="symbol-ring">
+    <img src="simbolo-robertha.svg" alt="Símbolo Robertha Aranha"/>
+  </div>
+  <div class="logo-block">
+    <span class="logo-name">Robertha Aranha</span>
+    <div class="logo-divider"></div>
+    <span class="logo-sub">Canal de Luz · Metodologia JDL</span>
+  </div>
+</div>
+
+<p class="section-label">── Variações de uso ──</p>
+
+<!-- VARIAÇÕES -->
+<div class="variations">
+
+  <!-- Estático isolado -->
+  <div class="var-card">
+    <div class="var-static">
+      <img src="simbolo-robertha.svg" alt=""/>
+    </div>
+    <p>Símbolo isolado<br>— ícone, favicon, selo</p>
+  </div>
+
+  <!-- Com anel -->
+  <div class="var-card">
+    <div class="var-circle">
+      <img src="simbolo-robertha.svg" alt=""/>
+    </div>
+    <p>Com moldura circular<br>— perfil, avatar</p>
+  </div>
+
+  <!-- Horizontal com nome -->
+  <div class="var-card">
+    <div class="var-horizontal">
+      <img src="simbolo-robertha.svg" alt=""/>
+      <div class="txt">
+        <span class="nm">Robertha<br>Aranha</span>
+        <span class="sb">Canal de Luz</span>
+      </div>
+    </div>
+    <p>Versão horizontal<br>— navbar, cabeçalho</p>
+  </div>
+
+</div>
+
+<p class="section-label" style="margin-top:1rem">
+  Flor da Vida · Merkabá · Roda Zodiacal &nbsp;✦&nbsp; Geometria Sagrada Multidimensional
+</p>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <defs>
+    <clipPath id="innerClip"><circle cx="150" cy="150" r="78"/></clipPath>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="outerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9B7FD4" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#9B7FD4" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      #zodRing {
+        animation: zodRot 80s linear infinite;
+        transform-origin: 150px 150px;
+      }
+      @keyframes zodRot {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+      .cl { stroke: rgba(201,169,110,0.55); stroke-width: 0.7; fill: none; }
+      .cs { fill: rgba(201,169,110,0.78); }
+      .cs-b { fill: rgba(232,201,138,1); }
+      .cs-d { fill: rgba(201,169,110,0.42); }
+    </style>
+  </defs>
+
+  <!-- Glows -->
+  <circle cx="150" cy="150" r="148" fill="url(#outerGlow)"/>
+  <circle cx="150" cy="150" r="65"  fill="url(#centerGlow)"/>
+
+  <!-- ══════════════════════════════════════════
+       MERKABÁ — externo, estático, r=142
+  ══════════════════════════════════════════ -->
+  <!-- Triângulo para cima -->
+  <polygon
+    points="150,8 272,222 28,222"
+    stroke="rgba(201,169,110,0.72)" stroke-width="1.5"
+    fill="rgba(201,169,110,0.03)"/>
+  <!-- Triângulo para baixo -->
+  <polygon
+    points="150,292 272,78 28,78"
+    stroke="rgba(201,169,110,0.72)" stroke-width="1.5"
+    fill="rgba(201,169,110,0.03)"/>
+  <!-- Hexágono interno (interseção, r≈82) -->
+  <polygon
+    points="191,78 232,150 191,222 109,222 68,150 109,78"
+    stroke="rgba(201,169,110,0.28)" stroke-width="0.8"
+    fill="rgba(155,127,212,0.04)"/>
+
+  <!-- Linhas internas da estrela — 3 diâmetros do hexágono -->
+  <g stroke="rgba(201,169,110,0.80)" stroke-width="1.4">
+    <line x1="191" y1="78"  x2="109" y2="222"/>
+    <line x1="232" y1="150" x2="68"  y2="150"/>
+    <line x1="191" y1="222" x2="109" y2="78"/>
+  </g>
+  <!-- Triângulos internos (estrela inscrita no hexágono) -->
+  <polygon points="191,78 191,222 68,150"
+    stroke="rgba(201,169,110,0.70)" stroke-width="1.3"
+    fill="rgba(201,169,110,0.04)"/>
+  <polygon points="232,150 109,222 109,78"
+    stroke="rgba(201,169,110,0.70)" stroke-width="1.3"
+    fill="rgba(201,169,110,0.04)"/>
+  <!-- Círculo central -->
+  <circle cx="150" cy="150" r="18"
+    stroke="rgba(201,169,110,0.60)" stroke-width="1.2" fill="rgba(201,169,110,0.05)"/>
+  <circle cx="150" cy="150" r="4" fill="rgba(201,169,110,1)"/>
+
+  <!-- ══════════════════════════════════════════
+       RODA ZODIACAL — girando internamente, r=100
+  ══════════════════════════════════════════ -->
+  <g id="zodRing">
+    <!-- Anéis da roda -->
+    <circle cx="150" cy="150" r="100" stroke="rgba(201,169,110,0.45)" stroke-width="1"/>
+    <circle cx="150" cy="150" r="84"  stroke="rgba(201,169,110,0.2)"  stroke-width="0.7"/>
+    <circle cx="150" cy="150" r="102" stroke="rgba(201,169,110,0.1)"  stroke-width="0.5" stroke-dasharray="2 5"/>
+
+    <!-- 12 divisões (do anel interno ao externo) -->
+    <g stroke="rgba(201,169,110,0.45)" stroke-width="0.8">
+      <line x1="150" y1="50"    x2="150" y2="66"/>
+      <line x1="200" y1="63.4"  x2="193" y2="75.5"/>
+      <line x1="236.6" y1="100" x2="228" y2="113.5"/>
+      <line x1="250" y1="150"   x2="234" y2="150"/>
+      <line x1="236.6" y1="200" x2="228" y2="186.5"/>
+      <line x1="200" y1="236.6" x2="193" y2="224.5"/>
+      <line x1="150" y1="250"   x2="150" y2="234"/>
+      <line x1="100" y1="236.6" x2="107" y2="224.5"/>
+      <line x1="63.4" y1="200"  x2="72"  y2="186.5"/>
+      <line x1="50"  y1="150"   x2="66"  y2="150"/>
+      <line x1="63.4" y1="100"  x2="72"  y2="113.5"/>
+      <line x1="100" y1="63.4"  x2="107" y2="75.5"/>
+    </g>
+
+    <!-- 12 pontos no anel externo -->
+    <g class="cs">
+      <circle cx="150"   cy="50"    r="2.2"/>
+      <circle cx="200"   cy="63.4"  r="1.8"/>
+      <circle cx="236.6" cy="100"   r="1.8"/>
+      <circle cx="250"   cy="150"   r="2.2"/>
+      <circle cx="236.6" cy="200"   r="1.8"/>
+      <circle cx="200"   cy="236.6" r="1.8"/>
+      <circle cx="150"   cy="250"   r="2.2"/>
+      <circle cx="100"   cy="236.6" r="1.8"/>
+      <circle cx="63.4"  cy="200"   r="1.8"/>
+      <circle cx="50"    cy="150"   r="2.2"/>
+      <circle cx="63.4"  cy="100"   r="1.8"/>
+      <circle cx="100"   cy="63.4"  r="1.8"/>
+    </g>
+
+    <!-- ── 12 CONSTELAÇÕES (r=92, centro de cada setor) ── -->
+
+    <!-- ÁRIES 15° → (174,61) -->
+    <g transform="translate(174,61)">
+      <line class="cl" x1="-6" y1="3"  x2="0"  y2="0"/>
+      <line class="cl" x1="0"  y1="0"  x2="5"  y2="-4"/>
+      <line class="cl" x1="5"  y1="-4" x2="7"  y2="2" opacity="0.5"/>
+      <circle class="cs-b" cx="-6" cy="3"  r="1.8"/>
+      <circle class="cs"   cx="0"  cy="0"  r="1.3"/>
+      <circle class="cs"   cx="5"  cy="-4" r="1.1"/>
+      <circle class="cs-d" cx="7"  cy="2"  r="0.8"/>
+    </g>
+
+    <!-- TOURO 45° → (215,85) -->
+    <g transform="translate(215,85)">
+      <line class="cl" x1="-6" y1="3"  x2="-3" y2="-1"/>
+      <line class="cl" x1="-3" y1="-1" x2="0"  y2="0"/>
+      <line class="cl" x1="-3" y1="-1" x2="-3" y2="-5"/>
+      <circle class="cs-b" cx="-6" cy="3"  r="2"/>
+      <circle class="cs"   cx="-3" cy="-1" r="1.2"/>
+      <circle class="cs"   cx="0"  cy="0"  r="1"/>
+      <circle class="cs"   cx="-3" cy="-5" r="1"/>
+      <circle class="cs-d" cx="4"  cy="-4" r="0.7"/>
+      <circle class="cs-d" cx="5"  cy="-2" r="0.7"/>
+      <circle class="cs-d" cx="6"  cy="-4" r="0.7"/>
+    </g>
+
+    <!-- GÊMEOS 75° → (239,126) -->
+    <g transform="translate(239,126)">
+      <line class="cl" x1="-4" y1="-6" x2="-4" y2="5"/>
+      <line class="cl" x1="4"  y1="-6" x2="4"  y2="5"/>
+      <line class="cl" x1="-4" y1="-2" x2="4"  y2="-2" opacity="0.5"/>
+      <circle class="cs-b" cx="-4" cy="-6" r="2"/>
+      <circle class="cs-b" cx="4"  cy="-6" r="2"/>
+      <circle class="cs"   cx="-4" cy="-2" r="1"/>
+      <circle class="cs"   cx="4"  cy="-2" r="1"/>
+      <circle class="cs-d" cx="-4" cy="2"  r="0.9"/>
+      <circle class="cs-d" cx="4"  cy="2"  r="0.9"/>
+      <circle class="cs-d" cx="-4" cy="5"  r="0.7"/>
+      <circle class="cs-d" cx="4"  cy="5"  r="0.7"/>
+    </g>
+
+    <!-- CÂNCER 105° → (239,174) -->
+    <g transform="translate(239,174)">
+      <line class="cl" x1="-5" y1="-2" x2="0"  y2="0"/>
+      <line class="cl" x1="5"  y1="-2" x2="0"  y2="0"/>
+      <line class="cl" x1="0"  y1="0"  x2="-3" y2="4"/>
+      <line class="cl" x1="0"  y1="0"  x2="3"  y2="4"/>
+      <circle class="cs"   cx="-5" cy="-2" r="1.2"/>
+      <circle class="cs"   cx="5"  cy="-2" r="1.2"/>
+      <circle class="cs-d" cx="0"  cy="0"  r="0.9"/>
+      <circle class="cs"   cx="-3" cy="4"  r="1.4"/>
+      <circle class="cs"   cx="3"  cy="4"  r="1.4"/>
+    </g>
+
+    <!-- LEÃO 135° → (215,215) -->
+    <g transform="translate(215,215)">
+      <line class="cl" x1="-2" y1="-6" x2="-5" y2="-3"/>
+      <line class="cl" x1="-5" y1="-3" x2="-5" y2="0"/>
+      <line class="cl" x1="-5" y1="0"  x2="-3" y2="2"/>
+      <line class="cl" x1="-3" y1="2"  x2="0"  y2="2"/>
+      <line class="cl" x1="0"  y1="2"  x2="5"  y2="-1"/>
+      <circle class="cs-d" cx="-2" cy="-6" r="1"/>
+      <circle class="cs"   cx="-5" cy="-3" r="1.2"/>
+      <circle class="cs-d" cx="-5" cy="0"  r="1"/>
+      <circle class="cs-d" cx="-3" cy="2"  r="1"/>
+      <circle class="cs-b" cx="0"  cy="2"  r="2"/>
+      <circle class="cs"   cx="5"  cy="-1" r="1.5"/>
+    </g>
+
+    <!-- VIRGEM 165° → (174,239) -->
+    <g transform="translate(174,239)">
+      <line class="cl" x1="0"  y1="-6" x2="-3" y2="-2"/>
+      <line class="cl" x1="0"  y1="-6" x2="3"  y2="-2"/>
+      <line class="cl" x1="-3" y1="-2" x2="0"  y2="1"/>
+      <line class="cl" x1="3"  y1="-2" x2="0"  y2="1"/>
+      <line class="cl" x1="0"  y1="1"  x2="0"  y2="6"/>
+      <circle class="cs"   cx="0"  cy="-6" r="1.2"/>
+      <circle class="cs-d" cx="-3" cy="-2" r="1"/>
+      <circle class="cs-b" cx="3"  cy="-2" r="2"/>
+      <circle class="cs-d" cx="0"  cy="1"  r="0.9"/>
+      <circle class="cs"   cx="0"  cy="6"  r="1.1"/>
+    </g>
+
+    <!-- LIBRA 195° → (126,239) -->
+    <g transform="translate(126,239)">
+      <line class="cl" x1="-6" y1="2"  x2="6"  y2="2"/>
+      <line class="cl" x1="0"  y1="2"  x2="0"  y2="-5"/>
+      <line class="cl" x1="-4" y1="2"  x2="-4" y2="5"/>
+      <line class="cl" x1="4"  y1="2"  x2="4"  y2="5"/>
+      <circle class="cs"   cx="-6" cy="2"  r="1.4"/>
+      <circle class="cs"   cx="6"  cy="2"  r="1.4"/>
+      <circle class="cs-b" cx="0"  cy="-5" r="1.8"/>
+      <circle class="cs-d" cx="0"  cy="2"  r="0.8"/>
+      <circle class="cs"   cx="-4" cy="5"  r="1"/>
+      <circle class="cs"   cx="4"  cy="5"  r="1"/>
+    </g>
+
+    <!-- ESCORPIÃO 225° → (85,215) -->
+    <g transform="translate(85,215)">
+      <line class="cl" x1="-4" y1="-6" x2="-2" y2="-3"/>
+      <line class="cl" x1="-2" y1="-3" x2="0"  y2="0"/>
+      <line class="cl" x1="0"  y1="0"  x2="2"  y2="3"/>
+      <line class="cl" x1="2"  y1="3"  x2="4"  y2="5"/>
+      <line class="cl" x1="4"  y1="5"  x2="2"  y2="7"/>
+      <circle class="cs"   cx="-4" cy="-6" r="1.2"/>
+      <circle class="cs-d" cx="-2" cy="-3" r="1"/>
+      <circle class="cs-b" cx="0"  cy="0"  r="2"/>
+      <circle class="cs-d" cx="2"  cy="3"  r="1"/>
+      <circle class="cs"   cx="4"  cy="5"  r="1.2"/>
+      <circle class="cs"   cx="2"  cy="7"  r="1"/>
+    </g>
+
+    <!-- SAGITÁRIO 255° → (61,174) -->
+    <g transform="translate(61,174)">
+      <line class="cl" x1="-5" y1="2"  x2="-2" y2="-2"/>
+      <line class="cl" x1="-2" y1="-2" x2="2"  y2="-4"/>
+      <line class="cl" x1="2"  y1="-4" x2="5"  y2="-2"/>
+      <line class="cl" x1="-2" y1="-2" x2="0"  y2="3"/>
+      <line class="cl" x1="0"  y1="3"  x2="-5" y2="2" opacity="0.5"/>
+      <circle class="cs"   cx="-5" cy="2"  r="1.4"/>
+      <circle class="cs"   cx="-2" cy="-2" r="1.2"/>
+      <circle class="cs-b" cx="2"  cy="-4" r="1.8"/>
+      <circle class="cs-d" cx="5"  cy="-2" r="1"/>
+      <circle class="cs-d" cx="0"  cy="3"  r="1"/>
+    </g>
+
+    <!-- CAPRICÓRNIO 285° → (61,126) -->
+    <g transform="translate(61,126)">
+      <line class="cl" x1="-5" y1="-3" x2="0"  y2="-5"/>
+      <line class="cl" x1="0"  y1="-5" x2="5"  y2="-3"/>
+      <line class="cl" x1="5"  y1="-3" x2="4"  y2="3"/>
+      <line class="cl" x1="4"  y1="3"  x2="-5" y2="3"/>
+      <line class="cl" x1="-5" y1="3"  x2="-5" y2="-3"/>
+      <circle class="cs-b" cx="-5" cy="-3" r="1.8"/>
+      <circle class="cs-d" cx="0"  cy="-5" r="1"/>
+      <circle class="cs"   cx="5"  cy="-3" r="1.4"/>
+      <circle class="cs-d" cx="4"  cy="3"  r="1"/>
+      <circle class="cs"   cx="-5" cy="3"  r="1.2"/>
+    </g>
+
+    <!-- AQUÁRIO 315° → (85,85) -->
+    <g transform="translate(85,85)">
+      <polyline class="cl" points="-6,-2 -3,2 0,-2 3,2 6,-2"/>
+      <polyline class="cl" points="-6,2  -3,-2 0,2  3,-2 6,2" opacity="0.5"/>
+      <circle class="cs"   cx="-6" cy="-2" r="1.4"/>
+      <circle class="cs-b" cx="0"  cy="-2" r="1.8"/>
+      <circle class="cs"   cx="6"  cy="-2" r="1.2"/>
+      <circle class="cs-d" cx="-3" cy="2"  r="0.8"/>
+      <circle class="cs-d" cx="3"  cy="2"  r="0.8"/>
+    </g>
+
+    <!-- PEIXES 345° → (126,61) -->
+    <g transform="translate(126,61)">
+      <polyline class="cl" points="-6,-4 -4,0 -6,4"/>
+      <polyline class="cl" points="6,-4  4,0  6,4"/>
+      <line class="cl" x1="-4" y1="0" x2="4" y2="0" opacity="0.5"/>
+      <circle class="cs"   cx="-6" cy="-4" r="1.4"/>
+      <circle class="cs-d" cx="-4" cy="0"  r="1"/>
+      <circle class="cs"   cx="-6" cy="4"  r="1.2"/>
+      <circle class="cs"   cx="6"  cy="-4" r="1.2"/>
+      <circle class="cs-d" cx="4"  cy="0"  r="1"/>
+      <circle class="cs-b" cx="6"  cy="4"  r="1.8"/>
+    </g>
+  </g>
+  <!-- fim zodRing -->
+
+  <!-- ══════════════════════════════════════════
+       CENTRO — estático
+  ══════════════════════════════════════════ -->
+  <!-- Flor da Vida -->
+  <g clip-path="url(#innerClip)" stroke="rgba(201,169,110,0.48)" stroke-width="1" fill="none">
+    <circle cx="150" cy="150" r="38"/>
+    <circle cx="188" cy="150" r="38"/>
+    <circle cx="169" cy="117" r="38"/>
+    <circle cx="131" cy="117" r="38"/>
+    <circle cx="112" cy="150" r="38"/>
+    <circle cx="131" cy="183" r="38"/>
+    <circle cx="169" cy="183" r="38"/>
+    <circle cx="150" cy="79"  r="38" stroke="rgba(201,169,110,0.2)"/>
+    <circle cx="207" cy="112" r="38" stroke="rgba(201,169,110,0.2)"/>
+    <circle cx="207" cy="188" r="38" stroke="rgba(201,169,110,0.2)"/>
+    <circle cx="150" cy="221" r="38" stroke="rgba(201,169,110,0.2)"/>
+    <circle cx="93"  cy="188" r="38" stroke="rgba(201,169,110,0.2)"/>
+    <circle cx="93"  cy="112" r="38" stroke="rgba(201,169,110,0.2)"/>
+  </g>
+
+  <!-- Anel de contenção -->
+  <circle cx="150" cy="150" r="78" stroke="rgba(201,169,110,0.35)" stroke-width="1"/>
+  <!-- Anel lilás (Akáshico) -->
+  <circle cx="150" cy="150" r="40" stroke="rgba(155,127,212,0.45)" stroke-width="0.9" stroke-dasharray="3 5"/>
+  <!-- Ponto central -->
+  <circle cx="150" cy="150" r="10" stroke="rgba(201,169,110,0.45)" stroke-width="0.9"/>
+  <circle cx="150" cy="150" r="5"  stroke="rgba(201,169,110,0.65)" stroke-width="0.8"/>
+  <circle cx="150" cy="150" r="2.5" fill="rgba(201,169,110,1)"/>
+  <!-- 6 nós da Flor da Vida -->
+  <g fill="rgba(201,169,110,0.6)">
+    <circle cx="150"   cy="112" r="1.7"/>
+    <circle cx="183"   cy="131" r="1.7"/>
+    <circle cx="183"   cy="169" r="1.7"/>
+    <circle cx="150"   cy="188" r="1.7"/>
+    <circle cx="117"   cy="169" r="1.7"/>
+    <circle cx="117"   cy="131" r="1.7"/>
+  </g>
+</svg>

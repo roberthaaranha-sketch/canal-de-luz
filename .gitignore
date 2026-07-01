@@ -1,0 +1,7 @@
+# Local Netlify folder
+.netlify
+.vercel
+.claude
+
+# Unused private file, not referenced by the site
+foto-robertha.jpg
