@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login · Robertha Aranha · Canal de Luz</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* estilos específicos desta página, usando as mesmas variáveis do site */
+  .login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .login-card {
+    max-width: 420px;
+    width: 100%;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3rem 2.5rem;
+  }
+  .login-card h1 {
+    font-family: var(--ff-head);
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+  .login-card .sub {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+  .login-msg {
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    text-align: center;
+    min-height: 1.2em;
+  }
+  .login-msg.erro { color: #e08a8a; }
+  .login-msg.ok { color: var(--gold); }
+</style>
+</head>
+<body>
+<div id="starfield"></div>
+
+<div class="login-wrap">
+  <div class="login-card fade-up visible">
+    <h1>Minhas Terapias</h1>
+    <p class="sub">Área privada · Canal de Luz Robertha Aranha</p>
+
+    <form id="form-login">
+      <div class="form-group" style="margin-bottom:1.25rem;">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required placeholder="seu@email.com">
+      </div>
+      <div class="form-group" style="margin-bottom:1.5rem;">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn-primary full" style="border:none;cursor:pointer;">Entrar</button>
+      <p id="msg" class="login-msg"></p>
+    </form>
+
+    <p class="form-note" style="text-align:center;margin-top:1.5rem;">
+      Esqueceu a senha ou ainda não recebeu seu acesso?
+      <a href="https://wa.me/5511984309434">Fale comigo pelo WhatsApp</a>.
+    </p>
+  </div>
+</div>
+
+<!-- Supabase JS client via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+  const SUPABASE_URL = "https://nnwlhzpltvxxfxtuwvvd.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_yir6x_R64EHbOpWyOcnd4w_fT7hqhRF";
+
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Se já estiver logada, vai direto para a área privada
+  supabaseClient.auth.getSession().then(({ data }) => {
+    if (data.session) window.location.href = "minhas-terapias.html";
+  });
+
+  const form = document.getElementById("form-login");
+  const msg = document.getElementById("msg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    msg.textContent = "Entrando...";
+    msg.className = "login-msg";
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value;
+
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password: senha });
+
+    if (error) {
+      msg.textContent = "E-mail ou senha incorretos.";
+      msg.className = "login-msg erro";
+      return;
+    }
+
+    msg.textContent = "Login realizado, entrando...";
+    msg.className = "login-msg ok";
+    window.location.href = "minhas-terapias.html";
+  });
+</script>
+</body>
+</html>
