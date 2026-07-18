@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar conta · Robertha Aranha · Canal de Luz</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .login-card {
+    max-width: 440px;
+    width: 100%;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3rem 2.5rem;
+  }
+  .login-card h1 {
+    font-family: var(--ff-head);
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+  .login-card .sub {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+  .login-msg {
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    text-align: center;
+    min-height: 1.2em;
+  }
+  .login-msg.erro { color: #e08a8a; }
+  .login-msg.ok { color: var(--gold); }
+</style>
+</head>
+<body>
+<div id="starfield"></div>
+
+<div class="login-wrap">
+  <div class="login-card fade-up visible">
+    <h1>Criar minha conta</h1>
+    <p class="sub">Área privada · Canal de Luz Robertha Aranha</p>
+
+    <form id="form-cadastro">
+      <div class="form-group" style="margin-bottom:1.25rem;">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required placeholder="seu@email.com">
+      </div>
+      <div class="form-group" style="margin-bottom:1.25rem;">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" required minlength="6" placeholder="Mínimo 6 caracteres">
+      </div>
+      <div class="form-group" style="margin-bottom:1.5rem;">
+        <label for="senha2">Confirmar senha</label>
+        <input type="password" id="senha2" required minlength="6" placeholder="Repita a senha">
+      </div>
+      <button type="submit" class="btn-primary full" style="border:none;cursor:pointer;">Criar conta</button>
+      <p id="msg" class="login-msg"></p>
+    </form>
+
+    <p class="form-note" style="text-align:center;margin-top:1.5rem;">
+      Já tem uma conta? <a href="login.html">Entrar</a>
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+  const SUPABASE_URL = "https://nnwlhzpltvxxfxtuwvvd.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_yir6x_R64EHbOpWyOcnd4w_fT7hqhRF";
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  supabaseClient.auth.getSession().then(({ data }) => {
+    if (data.session) window.location.href = "minhas-terapias.html";
+  });
+
+  const form = document.getElementById("form-cadastro");
+  const msg = document.getElementById("msg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value;
+    const senha2 = document.getElementById("senha2").value;
+
+    if (senha !== senha2) {
+      msg.textContent = "As senhas não coincidem.";
+      msg.className = "login-msg erro";
+      return;
+    }
+
+    msg.textContent = "Criando sua conta...";
+    msg.className = "login-msg";
+
+    const { data, error } = await supabaseClient.auth.signUp({ email, password: senha });
+
+    if (error) {
+      msg.textContent = error.message.includes("already registered") || error.message.includes("already exists")
+        ? "Já existe uma conta com esse e-mail. Tente entrar."
+        : "Não foi possível criar a conta. Tente novamente.";
+      msg.className = "login-msg erro";
+      return;
+    }
+
+    if (data.session) {
+      // conta já ativa (confirmação de e-mail desligada) — entra direto
+      msg.textContent = "Conta criada! Entrando...";
+      msg.className = "login-msg ok";
+      window.location.href = "minhas-terapias.html";
+    } else {
+      // precisa confirmar o e-mail antes de entrar
+      msg.textContent = "Conta criada! Confira seu e-mail para confirmar o cadastro e depois volte para entrar.";
+      msg.className = "login-msg ok";
+    }
+  });
+</script>
+</body>
+</html>
