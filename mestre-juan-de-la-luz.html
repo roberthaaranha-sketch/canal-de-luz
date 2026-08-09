@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mestre Juan de la Luz · Robertha Aranha · Canal de Luz</title>
+  <meta name="description" content="A trajetória de Robertha Aranha ao lado do Mestre Juan de la Luz — quase duas décadas de caminhada na Metodologia Quântica JDL.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4" />
+  <style>
+    #mestre-hero { padding: 8rem 0 3rem; text-align: center; position: relative; z-index: 1; }
+    #mestre-hero p.subtitle { max-width: 620px; margin: 0 auto; color: var(--muted); font-family: var(--ff-head); font-style: italic; font-size: 1.2rem; line-height: 1.7; }
+    .mestre-retrato-wrap { display: flex; justify-content: center; margin: 2.5rem 0 0.5rem; }
+    .mestre-retrato-wrap img { width: 190px; height: 190px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); box-shadow: 0 0 40px rgba(201,169,110,0.18); }
+    .mestre-retrato-legenda { text-align: center; color: var(--gold); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.9rem; opacity: 0.85; }
+    #mestre-narrativa { background: rgba(14,12,36,0.70); position: relative; z-index: 1; }
+    .narrativa-col { max-width: 720px; margin: 2.5rem auto 0; }
+    .narrativa-col p { color: var(--muted); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.85; }
+    .narrativa-col p em { color: var(--gold); font-style: italic; }
+    #mestre-timeline { background: var(--darker); position: relative; z-index: 1; }
+    .timeline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 2.5rem; }
+    .timeline-card { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: rgba(255,255,255,0.02); transition: border-color 0.3s; }
+    .timeline-card:hover { border-color: rgba(201,169,110,0.4); }
+    .timeline-card img { width: 100%; height: 230px; object-fit: cover; object-position: center; display: block; }
+    .timeline-card img.top { object-position: center 15%; }
+    .timeline-card .tc-year { color: var(--gold); font-family: var(--ff-head); font-size: 1.2rem; font-style: italic; padding: 1rem 1.25rem 0.25rem; line-height: 1.3; }
+    .timeline-card .tc-caption { color: var(--muted); font-size: 0.85rem; padding: 0 1.25rem 1.25rem; line-height: 1.6; }
+    #mestre-hoje { background: rgba(19,17,46,0.68); position: relative; z-index: 1; }
+    .hoje-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .hoje-grid figure { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .hoje-grid img { width: 100%; height: 340px; object-fit: cover; display: block; }
+    @media (max-width: 900px) { .timeline-grid { grid-template-columns: 1fr 1fr; } .hoje-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .timeline-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+  <!-- NAVEGAÇÃO -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html#hero" class="nav-logo">
+        <span class="logo-name">Robertha Aranha</span>
+        <span class="logo-sub">Canal de Luz</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="mestre-juan-de-la-luz.html">Mestre Juan de la Luz</a></li>
+        <li><a href="index.html#terapias">Terapias</a></li>
+        <li><a href="index.html#alegrese">Alegre-Ser</a></li>
+        <li><a href="imersoes.html">Imersões Quânticas</a></li>
+        <li><a href="index.html#agendar" class="btn-nav">Agendar Sessão</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO DA PÁGINA -->
+  <section id="mestre-hero">
+    <div class="container">
+      <div class="section-symbol">✦</div>
+      <h2 class="section-title">Minha Jornada ao Lado do<br>Mestre Juan de la Luz</h2>
+      <p class="subtitle">"Você é uma criatura das estrelas. Sua luz brilha diferente e o universo inteiro aguarda que você simplesmente seja."</p>
+      <div class="mestre-retrato-wrap">
+        <img src="mestre-retrato.jpg" alt="Mestre Juan de la Luz" />
+      </div>
+      <p class="mestre-retrato-legenda">Mestre Juan de la Luz</p>
+    </div>
+  </section>
+
+  <div class="merkaba-divider"><img src="simbolo-robertha.svg" alt="" aria-hidden="true" /></div>
+
+  <!-- NARRATIVA -->
+  <section id="mestre-narrativa">
+    <div class="container">
+      <div class="narrativa-col">
+        <p>Em 2007, tive um sonho: um ser me abraçava, e eu podia sentir naquele abraço uma energia de amor incondicional. Dois meses depois, conheci o Mestre Juan de la Luz — e quando ele me abraçou, como faz com todos que chegam até ele, reconheci ali o mesmo abraço do meu sonho. Fiz minha iniciação, e a partir daquele momento minha vida mudou completamente. Pude me expandir a partir da minha própria essência e juntar todos os fios que antes eu não conseguia conectar.</p>
+        <p>De lá pra cá, são 19 anos de caminhada nunca interrompida ao lado do Mestre, aqui no Brasil. Um trabalho profundo comigo mesma — alinhando meu ser, depurando memórias inconscientes de dor que eu carregava sem nem saber. Camada por camada, ano após ano.</p>
+        <p>Mas esse processo nunca foi só meu. Junto com a minha própria expansão, me mantive atenta a abrir portas — em São Paulo e no interior — para que essa energia pudesse chegar e se instalar. Para que outros seres que se correspondem com essa energia divina também pudessem encontrar o caminho.</p>
+        <p>Em 2018, dei um passo mais profundo: fui morar no <em>El Edén, Portal Dimensional</em>, em Cali, na Colômbia, onde o Mestre vive. Foram três anos ali, trabalhando ainda mais fundo em mim mesma, em imersão total com a energia do Portal.</p>
+        <p>Voltei para São Paulo em maio de 2021 — e o caminho continuou. Sigo participando dos retiros com o Mestre Juan de la Luz aqui no Brasil, presente e ativa em cada etapa deste processo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINHA DO TEMPO EM FOTOS -->
+  <section id="mestre-timeline">
+    <div class="container">
+      <div class="section-symbol">◈</div>
+      <h2 class="section-title">Alguns registros de minha caminhada ao lado do Mestre Juan de la Luz</h2>
+      <div class="timeline-grid">
+        <div class="timeline-card">
+          <img src="mestre-2007.jpg" alt="Robertha e o Mestre Juan de la Luz, 2007" />
+          <p class="tc-year">2007</p>
+          <p class="tc-caption">Robertha e o Mestre Juan de la Luz.</p>
+        </div>
+        <div class="timeline-card">
+          <img src="mestre-2008-campinas.jpg" alt="Mestre Juan de la Luz em Campinas, 2008" />
+          <p class="tc-year">2008</p>
+          <p class="tc-caption">Mestre Juan de la Luz, em Campinas.</p>
+        </div>
+        <div class="timeline-card">
+          <img src="mestre-2009-valinhos.jpg" alt="Chia, Cassia, Juan, Roberta e Yamile, Valinhos, 2009" />
+          <p class="tc-year">2009</p>
+          <p class="tc-caption">Chia, Cassia, Juan, Roberta e Yamile — em Valinhos, 24/09.</p>
+        </div>
+        <div class="timeline-card">
+          <img src="mestre-2015-sp.jpg" alt="Roberta, Chrys, Juan e Blanquita, São Paulo, 2015" />
+          <p class="tc-year">2015</p>
+          <p class="tc-caption">Roberta, Chrys, Juan e Blanquita — São Paulo.</p>
+        </div>
+        <div class="timeline-card">
+          <img class="top" src="mestre-vale-do-matutu.jpg" alt="Mestre Juan de la Luz, liberação de espaço no Vale do Matutu, MG" />
+          <p class="tc-year">Liberação de espaço no Vale do Matutu &ndash; MG</p>
+          <p class="tc-caption">Mestre Juan de la Luz.</p>
+        </div>
+        <div class="timeline-card">
+          <img src="mestre-eden-robertha.jpg" alt="Robertha no El Edén, Portal Dimensional" />
+          <p class="tc-year">2018–2021</p>
+          <p class="tc-caption">Robertha no El Edén, onde viveu por três anos.</p>
+        </div>
+        <div class="timeline-card">
+          <img src="mestre-2023-eden.jpg" alt="Robertha em retiro no El Edén, Portal Dimensional, Cali, Colômbia, 2023" />
+          <p class="tc-year">2023</p>
+          <p class="tc-caption">Robertha em retiro no El Edén, Portal Dimensional — Cali, Colômbia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="merkaba-divider"><img src="simbolo-robertha.svg" alt="" aria-hidden="true" /></div>
+
+  <!-- HOJE -->
+  <section id="mestre-hoje">
+    <div class="container">
+      <div class="section-symbol">✦</div>
+      <h2 class="section-title">Hoje</h2>
+      <p class="section-sub">Presente e ativa em cada etapa deste processo, seguindo os retiros com o Mestre no Brasil.</p>
+      <div class="hoje-grid">
+        <figure>
+          <img src="mestre-hoje-1.jpg" alt="Robertha e o Mestre Juan de la Luz" />
+        </figure>
+        <figure>
+          <img src="mestre-retiro-cunha-2026.jpg" alt="Robertha e o Mestre Juan de la Luz, Retiro de Cunha, 2026" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-name">Robertha Aranha</span>
+          <span class="logo-sub">Canal de Luz desde 2007 · Certificada 2024–2026</span>
+          <p>"Conectando saberes e a energia que somos."</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#sobre">Sobre</a>
+          <a href="mestre-juan-de-la-luz.html">Mestre Juan de la Luz</a>
+          <a href="index.html#terapias">Terapias</a>
+          <a href="index.html#agendar">Agendar Sessão</a>
+        </div>
+        <div class="footer-contact">
+          <a href="mailto:roberthaaranha@icloud.com">roberthaaranha@icloud.com</a>
+          <a href="https://wa.me/5511984309434" target="_blank" rel="noopener">+55 11 98430-9434</a>
+          <span>São Paulo, SP, Brasil</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>✦ &nbsp; Elaborado com amor e luz &nbsp; ✦</p>
+        <p class="footer-small">&copy; 2026 Robertha Aranha · Canal de Luz · Metodologia Quântica Juan de la Luz</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
