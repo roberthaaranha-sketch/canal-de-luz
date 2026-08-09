@@ -178,5 +178,100 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+  (function(){
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let W, H, stars = [], shooting = null, shootTimer = 0;
+
+    function resize(){
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+
+    function randBetween(a, b){ return a + Math.random()*(b-a); }
+
+    function initStars(){
+      stars = [];
+      const count = Math.floor((W * H) / 1800);
+      for(let i = 0; i < count; i++){
+        const layer = Math.random();
+        stars.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: layer < 0.5 ? randBetween(0.5, 1.2) : randBetween(1.2, 2.4),
+          baseAlpha: layer < 0.5 ? randBetween(0.4, 0.75) : randBetween(0.7, 1.0),
+          alpha: 0,
+          twinkleSpeed: randBetween(0.005, 0.018),
+          twinklePhase: Math.random() * Math.PI * 2,
+          color: Math.random() < 0.55 ? '#C9A96E' : Math.random() < 0.2 ? '#E8C98A' : Math.random() < 0.15 ? '#9B7FD4' : '#ffffff'
+        });
+      }
+    }
+
+    function spawnShooting(){
+      const x = Math.random() * W * 0.8;
+      const y = Math.random() * H * 0.4;
+      shooting = { x, y, dx: randBetween(3,6), dy: randBetween(1.5,3), len: randBetween(80,160), alpha: 1 };
+    }
+
+    function draw(ts){
+      ctx.clearRect(0, 0, W, H);
+
+      // stars
+      for(const s of stars){
+        s.twinklePhase += s.twinkleSpeed;
+        s.alpha = s.baseAlpha * (0.6 + 0.4 * Math.sin(s.twinklePhase));
+        const glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4);
+        glow.addColorStop(0,   s.color.replace(')', `,${s.alpha})`).replace('rgb', 'rgba').replace('#C9A96E', `rgba(201,169,110,${s.alpha})`).replace('#E8C98A', `rgba(232,201,138,${s.alpha})`).replace('#9B7FD4', `rgba(155,127,212,${s.alpha})`).replace('#ffffff', `rgba(255,255,255,${s.alpha})`));
+        glow.addColorStop(0.3, s.color === '#C9A96E' ? `rgba(201,169,110,${s.alpha * 0.4})` : s.color === '#E8C98A' ? `rgba(232,201,138,${s.alpha * 0.4})` : s.color === '#9B7FD4' ? `rgba(155,127,212,${s.alpha * 0.4})` : `rgba(255,255,255,${s.alpha * 0.4})`);
+        glow.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 4, 0, Math.PI*2);
+        ctx.fillStyle = glow;
+        ctx.globalAlpha = 1;
+        ctx.fill();
+        // bright core
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 0.6, 0, Math.PI*2);
+        ctx.fillStyle = '#ffffff';
+        ctx.globalAlpha = s.alpha * 0.9;
+        ctx.fill();
+      }
+
+      // shooting star
+      shootTimer++;
+      if(shootTimer > 420 && !shooting){ spawnShooting(); shootTimer = 0; }
+      if(shooting){
+        const grad = ctx.createLinearGradient(
+          shooting.x - shooting.dx * shooting.len / 5, shooting.y - shooting.dy * shooting.len / 5,
+          shooting.x, shooting.y
+        );
+        grad.addColorStop(0, 'rgba(255,255,255,0)');
+        grad.addColorStop(1, `rgba(255,255,255,${shooting.alpha})`);
+        ctx.beginPath();
+        ctx.moveTo(shooting.x - shooting.dx * shooting.len / 5, shooting.y - shooting.dy * shooting.len / 5);
+        ctx.lineTo(shooting.x, shooting.y);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = shooting.alpha;
+        ctx.stroke();
+        shooting.x += shooting.dx;
+        shooting.y += shooting.dy;
+        shooting.alpha -= 0.018;
+        if(shooting.alpha <= 0 || shooting.x > W) shooting = null;
+      }
+
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', ()=>{ resize(); initStars(); });
+    // re-measure height when content loads
+    window.addEventListener('load', ()=>{ resize(); initStars(); });
+    resize(); initStars();
+    requestAnimationFrame(draw);
+  })();
+  </script>
 </body>
 </html>
