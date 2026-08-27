@@ -690,6 +690,21 @@ section { padding: 6rem 0; }
 .alegrese-item p { color: var(--muted); font-size: 0.9rem; margin: 0; }
 .alegrese-item p strong { color: var(--white); font-weight: 400; }
 
+.podser-youtube-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  color: var(--gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s;
+}
+.podser-youtube-link svg { flex-shrink: 0; }
+.podser-youtube-link:hover { opacity: 1; color: var(--gold2); }
+
 .btn-ghost-dark {
   display: inline-block;
   border: 1px solid var(--border);
