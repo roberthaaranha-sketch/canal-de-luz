@@ -28,10 +28,9 @@
     .timeline-card .tc-year { color: var(--gold); font-family: var(--ff-head); font-size: 1.2rem; font-style: italic; padding: 1rem 1.25rem 0.25rem; line-height: 1.3; }
     .timeline-card .tc-caption { color: var(--muted); font-size: 0.85rem; padding: 0 1.25rem 1.25rem; line-height: 1.6; }
     #mestre-hoje { background: rgba(19,17,46,0.68); position: relative; z-index: 1; }
-    .hoje-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
-    .hoje-grid figure { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-    .hoje-grid img { width: 100%; height: 340px; object-fit: cover; display: block; }
-    @media (max-width: 900px) { .timeline-grid { grid-template-columns: 1fr 1fr; } .hoje-grid { grid-template-columns: 1fr; } }
+        .hoje-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 2.5rem; margin-top: 2.5rem; }
+    .hoje-photo-img { max-width: 360px; width: 100%; height: auto; display: block; }
+    @media (max-width: 900px) { .timeline-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .timeline-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
