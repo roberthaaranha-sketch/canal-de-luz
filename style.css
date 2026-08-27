@@ -494,10 +494,8 @@ section { padding: 6rem 0; }
 }
 
 .mestre-home-photo {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 0 40px rgba(201,169,110,0.12);
+  display: flex;
+  justify-content: center;
 }
 .mestre-home-photo img { width: 100%; height: auto; display: block; }
 
