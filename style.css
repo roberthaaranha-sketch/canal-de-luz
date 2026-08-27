@@ -484,7 +484,7 @@ section { padding: 6rem 0; }
 .don-item p { color: var(--muted); font-size: 0.88rem; margin: 0; }
 
 /* ===== MESTRE JUAN DE LA LUZ (TEASER HOME) ===== */
-#mestre-home { background: var(--darker); border-top: 1px solid var(--border); position: relative; z-index: 1; }
+#mestre-home { background: rgba(14,12,36,0.70); border-top: 1px solid var(--border); position: relative; z-index: 1; }
 
 .mestre-home-grid {
   display: grid;
@@ -642,8 +642,10 @@ section { padding: 6rem 0; }
 
 /* ===== ALEGRE-SER ===== */
 #alegrese {
-  background: var(--darker);
+  background: rgba(14,12,36,0.70);
   border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
 }
 .alegrese-banner {
   position: relative;
