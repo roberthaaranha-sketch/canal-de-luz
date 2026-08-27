@@ -483,6 +483,43 @@ section { padding: 6rem 0; }
 .don-item strong { display: block; color: var(--white); font-weight: 400; margin-bottom: 0.25rem; font-size: 0.95rem; }
 .don-item p { color: var(--muted); font-size: 0.88rem; margin: 0; }
 
+/* ===== MESTRE JUAN DE LA LUZ (TEASER HOME) ===== */
+#mestre-home { background: var(--darker); border-top: 1px solid var(--border); position: relative; z-index: 1; }
+
+.mestre-home-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.mestre-home-photo {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(201,169,110,0.12);
+}
+.mestre-home-photo img { width: 100%; height: auto; display: block; }
+
+.mestre-home-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+.mestre-home-frase {
+  font-family: var(--ff-head);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
 /* ===== QUOTE ===== */
 .quote-section {
   background: var(--mid);
@@ -849,7 +886,8 @@ footer {
 @media (max-width: 900px) {
   .sobre-grid,
   .alegrese-grid,
-  .agendar-grid,
+    .mestre-home-grid,
+.agendar-grid,
   .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
 
   .terapias-grid,
