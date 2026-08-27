@@ -651,14 +651,14 @@ section { padding: 6rem 0; }
   position: relative;
   z-index: 1;
   margin: 2.5rem 0 3rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 0 40px rgba(201,169,110,0.10);
-  aspect-ratio: 1400 / 856;
-  background-image: url('alegrese-foto.jpg');
-  background-size: cover;
-  background-position: center;
+  text-align: center;
+}
+
+.alegrese-banner .alegrese-photo-img {
+  max-width: 640px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
 }
 
 .alegrese-grid {
