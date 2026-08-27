@@ -648,6 +648,8 @@ section { padding: 6rem 0; }
   border-top: 1px solid var(--border);
 }
 .alegrese-banner {
+  position: relative;
+  z-index: 1;
   margin: 2.5rem 0 3rem;
   border: 1px solid var(--border);
   border-radius: 6px;
