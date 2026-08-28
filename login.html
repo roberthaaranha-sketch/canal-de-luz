@@ -46,10 +46,21 @@
   }
   .login-msg.erro { color: #e08a8a; }
   .login-msg.ok { color: var(--gold); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.9rem 2rem; background: rgba(8,7,26,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .nav-back { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 2px; transition: all 0.3s; white-space: nowrap; }
+  .nav-back:hover { border-color: var(--gold); color: var(--gold); }
 </style>
 </head>
 <body>
 <div id="starfield"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="logo-name">Robertha Aranha</span>
+    <span class="logo-sub">Canal de Luz</span>
+  </a>
+  <a href="index.html" class="nav-back">← Voltar ao site</a>
+</nav>
 
 <div class="login-wrap">
   <div class="login-card fade-up visible">
